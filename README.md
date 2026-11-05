@@ -2,8 +2,8 @@
 
 [Open the timer](https://fuji400.github.io/eva-pomodoro/)
 
-A standalone EVA-style countdown timer. Choose 25 MIN, 5 MIN, or 15 MIN, then START. STOP pauses; RESET returns to the selected duration; SETUP supports a custom duration.
+A faithful copy of the original standalone EVA activity-limit timer: its rainbow frame, fonts, layout, controls, sounds and behavior.
 
-Timing survives refresh in the same browser. Sound is off by default. SOUND ON previews the original EVA start effect and enables the start/zero effects. TEST SOUND previews it again; SOUND OFF stops playback immediately. Keep the tab open for timely sound; background browser suspension may delay it. Start the timer whenever you choose.
+Choose 5:00, 10:00, 15:00 or 30:00, or use SETUP. INTERNAL starts the timer; EXTERNAL pauses it. SOUND and MOTION use the original controls.
 
-No account, analytics, or server connection. This repository contains the built static website served by GitHub Pages.
+This repository contains the original built website, published with only its asset URL prefix relocated for GitHub Pages. Source: `fuji400/magi-clock-redesign`, `hud/`, commit `03c8068831d041f6e64e662de5e72cde0f12b5c4`. No application or style patches. The original narrow-phone layout clips the side controls.
