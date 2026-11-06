@@ -1,0 +1,189 @@
+/* Pages-only layout fixes. The original clock art, fonts and runtime stay intact. */
+@media (pointer: coarse) {
+  .sig-btn, .setup-pop .op-btn, .setup-fields input { min-height: 44px; }
+}
+
+@media (max-width: 700px), (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  .limit-shell {
+    padding: max(8px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+      max(8px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  }
+  .limit-top { height: auto; flex-basis: auto; min-height: 44px; gap: 8px 12px; }
+  .limit-tools { gap: 6px; }
+  .sig-btn { min-height: 44px; }
+  .stage { padding-block: 10px; }
+  .instrument { width: 100%; gap: 8px; }
+  .limit-shell .cluster { width: 100%; padding: 10px; }
+  .limit-shell .cluster-face { flex: 1 1 auto; width: 100%; padding: 10px; gap: 8px; }
+  .glitch-scan, .glitch-noise, .glitch-bars { position: absolute; inset: 0; pointer-events: none; }
+  .danger-banner { flex: 0 0 auto; margin: 0; padding: 3px 6px; font-size: 8px; }
+  .unit { width: 100%; min-width: 0; }
+  .hero { min-width: 0; padding: 0; }
+  .limit-shell .digits { padding: 2px 0 4px; }
+  .mseg { min-height: 44px; }
+  .limit-shell .cluster:has(.setup-pop) { z-index: 10; overflow: visible; }
+  .limit-shell .cluster-face:has(.setup-pop) { overflow: visible; }
+  .setup-pop {
+    position: fixed;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+    width: min(320px, calc(100vw - 32px));
+    max-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    overflow-y: auto;
+    background: #070c09;
+    box-shadow: 0 0 0 100vmax #0009;
+  }
+  .setup-fields input { min-height: 44px; }
+  .setup-pop .op-btn { min-height: 44px; }
+}
+
+/* Narrow screens: give the countdown its own row, then two reachable controls. */
+@media (max-width: 700px) and (orientation: portrait) {
+  html, body, #root, .limit-root, .limit-shell {
+    height: auto;
+    min-height: 100dvh;
+    max-height: none;
+    overflow: visible;
+  }
+  .limit-root { overflow: hidden; }
+  .stage { justify-content: flex-start; }
+  .limit-top { min-height: 76px; }
+  .limit-top > :first-child { flex: 1 0 100%; }
+  .unit { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 12px 8px; }
+  .vcol { min-width: 0; }
+  .vjp { font-size: 11px; }
+  .ato { font-size: 11px; writing-mode: vertical-rl; margin-top: 6px; }
+  .hero { width: 100%; container-type: inline-size; }
+  .limit-shell .digits { font-size: 21cqi; }
+  .atr { font-size: 8px; letter-spacing: 1px; padding: 5px 6px; margin-bottom: 8px; }
+  .power-col {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .pw.in, .pw.ext { grid-template-columns: minmax(0, 1fr) 20px; min-height: 56px; }
+  .pw.in { grid-area: 1 / 1; }
+  .pw.ext { grid-area: 1 / 2; }
+  .pw-copy { padding: 4px 7px; }
+  .pw .jp { font-size: 28px; }
+  .supply {
+    grid-area: 2 / 1 / auto / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3px 8px;
+    padding: 5px;
+  }
+  .supply .jp { font-size: 10px; }
+  .supply .en { max-width: none; margin: 0; }
+  .instrument .bridge { padding: 6px 10px; }
+  .instrument .bridge-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .bridge-lab .lbl { font-size: 7px; letter-spacing: .8px; }
+  .instrument .bridge-row { line-height: 1; padding-block: 6px; }
+  .instrument .bridge-lab .jp { font-size: 13px; line-height: 1.2; margin-bottom: 4px; }
+  .bridge-tag { display: block; margin-bottom: 4px; }
+  .instrument .bridge-digits { font-size: clamp(18px, 5.5vw, 30px); }
+}
+
+@media (max-width: 700px) and (orientation: portrait) and (max-height: 700px) {
+  .limit-top { min-height: 44px; flex-wrap: nowrap; gap: 6px; }
+  .limit-top > :first-child { flex: 0 1 auto; }
+  .system-jp { font-size: 14px; letter-spacing: 3px; }
+  .system-sub { font-size: 8px; }
+  .limit-tools { flex-wrap: nowrap; }
+  .limit-tools > .system-sub { display: none; }
+  .sig-btn { padding-inline: 7px; }
+  .stage { padding-block: 6px; }
+  .limit-shell .cluster { padding: 8px; }
+  .limit-shell .cluster-face { padding: 8px; gap: 6px; }
+  .instrument .bridge-row { padding-block: 5px; }
+}
+
+@media (max-width: 700px) and (orientation: portrait) and (max-height: 600px) {
+  .bridge-tag { display: none; }
+}
+
+/* Landscape phones: occupy the available viewport, with one slim readout strip. */
+@media (orientation: landscape) and (max-height: 600px) and (max-width: 1100px) {
+  .limit-shell { gap: 6px; }
+  .limit-top { min-height: 44px; flex-wrap: nowrap; }
+  .system-jp { font-size: 15px; letter-spacing: 4px; }
+  .system-sub { font-size: 8px; }
+  .limit-tools { flex-wrap: nowrap; }
+  .stage { padding: 0; }
+  .instrument { height: 100%; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 6px; }
+  .limit-shell .cluster { padding: 8px; }
+  .limit-shell .cluster-face { padding: 8px; gap: 6px; }
+  .limit-shell .cluster-face-grid { flex: 1 1 0; min-height: 0; }
+  .unit {
+    display: grid;
+    grid-template-columns: 20px minmax(0, 1fr) clamp(104px, 16vw, 158px);
+    grid-template-rows: minmax(0, 1fr);
+    height: 100%;
+    gap: 10px;
+  }
+  .vcol { min-width: 0; }
+  .vjp, .ato { font-size: 12px; }
+  .hero { width: 100%; height: 100%; min-height: 0; container-type: size; }
+  .limit-shell .digits { font-size: min(21cqi, calc(100cqh - 38px)); line-height: 1; }
+  .atr { font-size: 8px; line-height: 1; padding: 3px 6px; margin-bottom: 5px; }
+  .run-state { font-size: 8px; line-height: 1; margin-top: 4px; }
+  .power-col {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(44px, 1fr) auto minmax(44px, 1fr);
+    justify-content: stretch;
+    gap: 3px;
+  }
+  .pw.in, .pw.ext { grid-template-columns: minmax(0, 1fr) 20px; min-height: 44px; }
+  .pw-copy, .pw.ext .pw-copy { align-self: center; padding: 3px 6px; }
+  .pw .jp { font-size: clamp(22px, 3.5vw, 30px); line-height: 1; }
+  .pw .en { font-size: 8px; }
+  .supply { padding: 3px 5px; }
+  .supply .jp { font-size: 9px; }
+  .supply .en { font-size: 6px; line-height: 1.1; }
+  .battery-bar { flex: 0 0 9px; height: 9px; margin: 0; }
+  .mseg { padding: 4px; }
+  .instrument .bridge { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); padding: 4px 8px; }
+  .instrument .bridge-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3px;
+    padding: 0 8px;
+    border-bottom: 0;
+    border-right: 1px solid #42644d73;
+  }
+  .instrument .bridge-row:first-child { padding-left: 0; }
+  .instrument .bridge-row:last-child { padding-right: 0; border-right: 0; }
+  .instrument .bridge-lab .jp { font-size: 11px; line-height: 1; }
+  .bridge-lab .lbl { font-size: 7px; line-height: 1; letter-spacing: .8px; }
+  .bridge-tag { display: none; }
+  .instrument .bridge-digits { font-size: clamp(17px, 2.6vw, 26px); }
+  .mode-crit .power-col { grid-template-rows: repeat(2, minmax(44px, 1fr)); }
+  .mode-crit .supply { display: none; }
+}
+
+@media (orientation: landscape) and (max-height: 360px) and (max-width: 1100px) {
+  .limit-shell { padding-top: max(4px, env(safe-area-inset-top)); padding-bottom: max(4px, env(safe-area-inset-bottom)); gap: 4px; }
+  .limit-shell .cluster { padding: 6px; }
+  .limit-shell .cluster-face { padding: 6px; gap: 4px; }
+  .unit { gap: 8px; }
+  .vjp { font-size: 10px; }
+  .ato { font-size: 10px; margin-top: 5px; }
+  .power-col { grid-template-rows: repeat(2, minmax(44px, 1fr)); }
+  .power-col .supply, .instrument .bridge-lab .jp { display: none; }
+}
+
+/* Browser bars can leave less than 310px of height: keep the main timer usable. */
+@media (orientation: landscape) and (max-height: 310px) and (max-width: 1100px) {
+  .instrument { grid-template-rows: minmax(0, 1fr); }
+  .instrument .bridge { display: none; }
+}
